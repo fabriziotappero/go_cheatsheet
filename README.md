@@ -1,4 +1,4 @@
-# Go Cheat Sheet
+# <center> Go Cheatsheet </center>
 
 
 <details closed>
