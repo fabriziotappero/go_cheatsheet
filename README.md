@@ -695,6 +695,48 @@ func doStuff(channelOut, channelIn chan int) {
 }
 ```
 
+The following example demonstrates how to use channels to coordinate work between multiple goroutines. The `worker` function reads jobs from the `jobs` channel, processes them, and sends results to the `results` channel. It uses a `sync.WaitGroup` to signal when it is done.
+
+```go
+func worker(id int, jobs <-chan int, results chan<- int, wg *sync.WaitGroup) {
+    defer wg.Done()
+    for j := range jobs {
+        fmt.Printf("Worker %d started job %d\n", id, j)
+        time.Sleep(time.Second) // Simulate some work with a sleep
+        fmt.Printf("Worker %d finished job %d\n", id, j)
+        results <- j * 2 // Send the result to the results channel
+    }
+}
+
+func main() {
+    const numJobs = 5
+    jobs := make(chan int, numJobs)
+    results := make(chan int, numJobs)
+    var wg sync.WaitGroup
+
+    // Start 3 worker goroutines
+    for w := 1; w <= 3; w++ {
+        wg.Add(1)
+        go worker(w, jobs, results, &wg)
+    }
+
+    // Send jobs to the jobs channel
+    for j := 1; j <= numJobs; j++ {
+        jobs <- j
+    }
+    close(jobs) // Close the jobs channel to indicate no more jobs
+
+    // Wait for all workers to finish
+    wg.Wait()
+    close(results) // Close the results channel
+
+    // Collect results
+    for result := range results {
+        fmt.Println("Result:", result)
+    }
+}
+```
+
 ### Established Facts About Channels (Channel Axioms)
 A send to a nil channel blocks forever.
 
@@ -712,25 +754,25 @@ A receive from a nil channel blocks forever.
   ```
 A send to a closed channel panics.
 
-  ```go
-  var c = make(chan string, 1)
-  c <- "Hello, World!"
-  close(c)
-  c <- "Hello, Panic!"
-  // panic: send on closed channel
-  ```
+```go
+var c = make(chan string, 1)
+c <- "Hello, World!"
+close(c)
+c <- "Hello, Panic!"
+// panic: send on closed channel
+```
 A receive from a closed channel returns the zero value immediately.
 
-  ```go
-  var c = make(chan int, 2)
-  c <- 1
-  c <- 2
-  close(c)
-  for i := 0; i < 3; i++ {
-      fmt.Printf("%d ", <-c)
-  }
-  // 1 2 0
-  ```
+```go
+var c = make(chan int, 2)
+c <- 1
+c <- 2
+close(c)
+for i := 0; i < 3; i++ {
+    fmt.Printf("%d ", <-c)
+}
+// 1 2 0
+```
 
 ## Printing With Formatted I/O Functions
 
