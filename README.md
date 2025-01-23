@@ -623,9 +623,10 @@ func main() {
 ```
 
 # Concurrency
+In go, concurrency is implemented using Goroutines and Channels.
 
 ## Goroutines
-Goroutines are lightweight threads managed by Go (are not OS threads). `go f(a, b)` starts a new goroutine which runs the function `f`. You can use `sync.WaitGroup` to wait for gorutines to finish.
+Goroutines are lightweight threads managed by Go (are not OS threads). `go f(a, b)` starts a new goroutine which runs the function `f`. You can use `sync.WaitGroup` to wait for goroutines to finish.
 
 ```go
 func doStuff(wg *sync.WaitGroup) {
@@ -641,20 +642,24 @@ func main() {
 	wg.Add(1)
 	go doStuff(&wg)
 
+    // an anonymous function can be used with goroutines too
 	wg.Add(1)
 	go func(wg *sync.WaitGroup, x int) {
 		defer wg.Done()
 		fmt.Println("Doing anonymous stuff with", x)
-		time.Sleep(2 * time.Second)
+		time.Sleep(4 * time.Second)
 		fmt.Println("Done with anonymous stuff")
 	}(&wg, 42)
 
 	wg.Wait() // Wait for all goroutines in the WaitGroup to finish
-	fmt.Println("Main function ends")
+	fmt.Println("Main function ended")
 }
 ```
 
 ## Channels
+
+Channels are a way to communicate between goroutines. They allow you to send and receive values between different goroutines, enabling synchronization and data exchange.
+
 ```go
 ch := make(chan int) // create a channel of type int
 ch <- 42             // Send a value to the channel ch.
@@ -690,22 +695,22 @@ func doStuff(channelOut, channelIn chan int) {
 }
 ```
 
-### Channel Axioms
-- A send to a nil channel blocks forever
+### Established Facts About Channels (Channel Axioms)
+A send to a nil channel blocks forever.
 
   ```go
   var c chan string
   c <- "Hello, World!"
   // fatal error: all goroutines are asleep - deadlock!
   ```
-- A receive from a nil channel blocks forever
+A receive from a nil channel blocks forever.
 
   ```go
   var c chan string
   fmt.Println(<-c)
   // fatal error: all goroutines are asleep - deadlock!
   ```
-- A send to a closed channel panics
+A send to a closed channel panics.
 
   ```go
   var c = make(chan string, 1)
@@ -714,7 +719,7 @@ func doStuff(channelOut, channelIn chan int) {
   c <- "Hello, Panic!"
   // panic: send on closed channel
   ```
-- A receive from a closed channel returns the zero value immediately
+A receive from a closed channel returns the zero value immediately.
 
   ```go
   var c = make(chan int, 2)
@@ -727,21 +732,22 @@ func doStuff(channelOut, channelIn chan int) {
   // 1 2 0
   ```
 
-## Printing
+## Printing With Formatted I/O Functions
 
 ```go
-fmt.Println("Hello, 你好, नमस्ते, Привет, ᎣᏏᏲ") // basic print, plus newline
+fmt.Println("Hello, 你好, नमस्ते, Привет, ᎣᏏᏲ")                   // basic print with newline
 p := struct { X, Y int }{ 17, 2 }
-fmt.Println( "My point:", p, "x coord=", p.X ) // print structs, ints, etc
-s := fmt.Sprintln( "My point:", p, "x coord=", p.X ) // print to string variable
+fmt.Println( "My point:", p, "x coord=", p.X )                  // print structs, ints, etc
+s := fmt.Sprintln( "My point:", p, "x coord=", p.X )            // print to string variable
 
-fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0) // c-ish format
-s2 := fmt.Sprintf( "%d %f", 17, 17.0 ) // formatted print to string variable
+fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0)  // c-like format
+s2 := fmt.Sprintf( "%d %f", 17, 17.0 )                          // formatted print to string
 
+// multi-line string literal, using back-tick at beginning and end
 hellomsg := `
  "Hello" in Chinese is 你好 ('Ni Hao')
  "Hello" in Hindi is नमस्ते ('Namaste')
-` // multi-line string literal, using back-tick at beginning and end
+`
 ```
 
 ## Reflection
