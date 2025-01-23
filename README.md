@@ -889,4 +889,6 @@ func main() {
 // }
 ```
 
-
+## Print This Document
+Use the Chrome extension [GitHub Markdown Printer](
+https://chromewebstore.google.com/detail/github-markdown-printer/fehpdlpmcegfpbkgcnaleindodeegapk).
