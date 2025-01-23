@@ -1,45 +1,49 @@
-# Go Cheat Sheet
+# Go Cheatsheet
 
-# Index
-1. [Basic Syntax](#basic-syntax)
-2. [Operators](#operators)
-    * [Arithmetic](#arithmetic)
-    * [Comparison](#comparison)
-    * [Logical](#logical)
-    * [Other](#other)
-3. [Declarations](#declarations)
-4. [Functions](#functions)
-    * [Functions as values and closures](#functions-as-values-and-closures)
-    * [Variadic Functions](#variadic-functions)
-5. [Built-in Types](#built-in-types)
-6. [Type Conversions](#type-conversions)
-7. [Packages](#packages)
-8. [Control structures](#control-structures)
-    * [If](#if)
-    * [Loops](#loops)
-    * [Switch](#switch)
-9. [Arrays, Slices, Ranges](#arrays-slices-ranges)
-    * [Arrays](#arrays)
-    * [Slices](#slices)
-    * [Operations on Arrays and Slices](#operations-on-arrays-and-slices)
-10. [Maps](#maps)
-11. [Structs](#structs)
-12. [Pointers](#pointers)
-13. [Interfaces](#interfaces)
-14. [Embedding](#embedding)
-15. [Errors](#errors)
-16. [Concurrency](#concurrency)
-    * [Goroutines](#goroutines)
-    * [Channels](#channels)
-    * [Channel Axioms](#channel-axioms)
-17. [Printing](#printing)
-18. [Reflection](#reflection)
-    * [Type Switch](#type-switch)
-    * [Examples (external)](https://github.com/a8m/reflect-examples)
-19. [Snippets](#snippets)
-    * [Files Embedding](#files-embedding)
-    * [HTTP Server](#http-server)
+  * [Go in a Nutshell](#go-in-a-nutshell)
+  * [Hello World](#hello-world)
+  * [Operators](#operators)
+    + [Arithmetic](#arithmetic)
+    + [Comparison](#comparison)
+    + [Logical](#logical)
+    + [Other](#other)
+  * [Declarations](#declarations)
+  * [Functions](#functions)
+    + [Functions As Values And Closures](#functions-as-values-and-closures)
+    + [Variadic Functions](#variadic-functions)
+  * [Built-in Types](#built-in-types)
+  * [Type Conversions](#type-conversions)
+  * [Packages](#packages)
+  * [Control structures](#control-structures)
+    + [If](#if)
+    + [Loops](#loops)
+    + [Switch](#switch)
+  * [Arrays, Slices, Ranges](#arrays--slices--ranges)
+    + [Arrays](#arrays)
+    + [Slices](#slices)
+    + [Operations on Arrays and Slices](#operations-on-arrays-and-slices)
+  * [Maps](#maps)
+  * [Structs](#structs)
+  * [Pointers](#pointers)
+  * [Interfaces](#interfaces)
+  * [Embedding](#embedding)
+    + [Benefits of Embedding](#benefits-of-embedding)
+  * [Errors](#errors)
+  * [Concurrency](#concurrency)
+    + [Goroutines](#goroutines)
+    + [Channels](#channels)
+    + [Established Facts About Channels (Channel Axioms)](#established-facts-about-channels--channel-axioms-)
+  * [Printing With Formatted I/O Functions](#printing-with-formatted-i-o-functions)
+  * [Reflection](#reflection)
+    + [Type Switch](#type-switch)
+    + [Examples (external)](https://github.com/a8m/reflect-examples)
+- [Snippets](#snippets)
+  * [Files Embedding](#files-embedding)
+  * [HTTP Server](#http-server)
 
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+ 
 ## Credits
 
 Most example code taken from [A Tour of Go](http://tour.golang.org/), which is an excellent introduction to Go.
@@ -59,8 +63,6 @@ If you're new to Go, do that tour. Seriously.
 * Has closures
 * Pointers, but not pointer arithmetic
 * Built-in concurrency primitives: Goroutines and Channels
-
-# Basic Syntax
 
 ## Hello World
 
@@ -656,10 +658,10 @@ func main() {
 }
 ```
 
-# Concurrency
+## Concurrency
 In go, concurrency is implemented using Goroutines and Channels.
 
-## Goroutines
+### Goroutines
 Goroutines are lightweight threads managed by Go (are not OS threads). `go f(a, b)` starts a new goroutine which runs the function `f`. You can use `sync.WaitGroup` to wait for goroutines to finish.
 
 ```go
@@ -690,7 +692,7 @@ func main() {
 }
 ```
 
-## Channels
+### Channels
 
 Channels are a way to communicate between goroutines. They allow you to send and receive values between different goroutines, enabling synchronization and data exchange.
 
