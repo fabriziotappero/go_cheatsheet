@@ -88,28 +88,28 @@ func main() {
 
 ## Operators
 
-### Arithmetic $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Comparison
+### Arithmetic $~~~~~~~~~~~~~~~~~~~~~~~~~~$ Comparison
 
-|Operator|Description||||Operator|Description|
-|--------|-----------|-|-|-|--------|-----------|
-|`+`|addition||||`==`|equal|
-|`-`|subtraction||||`!=`|not equal|
-|`*`|multiplication||||`<`|less than|
-|`/`|quotient||||`<=`|less than or equal|
-|`%`|remainder||||`>`|greater than|
-|`&`|bitwise and||||`>=`|greater than or equal|
+|Operator|Description||Operator|Description|
+|--------|-----------|--|--------|-----------|
+|`+`|addition||`==`|equal|
+|`-`|subtraction||`!=`|not equal|
+|`*`|multiplication||`<`|less than|
+|`/`|quotient||`<=`|less than or equal|
+|`%`|remainder||`>`|greater than|
+|`&`|bitwise and||`>=`|greater than or equal|
 |`\|`|bitwise or|
 |`^`|bitwise xor|
 |`&^`|bit clear (and not)|
 |`<<`|left shift|
 |`>>`|right shift|
 
-### Logical $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Others
-|Operator|Description||||Operator|Description|
-|--------|-----------|-|-|-|--------|-----------|
-|`&&`|logical and||||`&`|address of or pointer creator|
-|`\|\|`|logical or||||`*`|dereference pointer|
-|`!`|logical not||||`<-`|send/receive operator (see `Channels` section)|
+### Logical $~~~~~~~~~~~~~~~~~~~~~~~~$ Others
+|Operator|Description||Operator|Description|
+|--------|-----------|-|--------|-----------|
+|`&&`|logical and||`&`|address of or pointer creator|
+|`\|\|`|logical or||`*`|dereference pointer|
+|`!`|logical not||`<-`|send/receive operator (see `Channels` section)|
 
 ## Declarations
 
