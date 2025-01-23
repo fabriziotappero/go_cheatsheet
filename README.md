@@ -88,7 +88,7 @@ func main() {
 
 ## Operators
 
-<table cellspacing="0" cellpadding="0">
+<table style="border-collapse: collapse; border: none; !important;">
 <tr>
 <td style="padding-right: 70px;">
 
@@ -124,7 +124,7 @@ func main() {
 </tr>
 </table>
 
-<table>
+<table style="border-collapse: collapse; border: none; !important;">
 <tr>
 <td style="padding-right: 70px;">
 
