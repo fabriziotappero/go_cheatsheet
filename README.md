@@ -1,5 +1,4 @@
-# <center> Go Cheatsheet </center>
-
+<h1 align="center">Go Cheatsheet</h1>
 
 <details closed>
   <summary>Table of Contents</summary>
