@@ -559,7 +559,7 @@ func main() {
 
 ## Embedding
 
-There is no subclassing in Go. Instead, there is interface and struct embedding.
+Embedding is a way to include one struct or interface within another struct or interface. This allows the embedded type's methods to be accessed directly from the embedding type, providing a form of composition and reuse without inheritance.
 
 ```go
 // ReadWriter implementations must satisfy both Reader and Writer
@@ -584,6 +584,10 @@ server.Log(...) // calls server.Logger.Log(...)
 // the field name of the embedded type is its type name (in this case Logger)
 var logger *log.Logger = server.Logger
 ```
+### Benefits of Embedding
+
+**Code Reuse.** Embedding allows you to reuse the functionality of the embedded type without having to write wrapper methods.
+**Composition Over Inheritance.** Go promotes composition over inheritance, and embedding is a way to achieve that. It allows you to build complex types by combining simpler ones.
 
 ## Errors
 
@@ -621,21 +625,32 @@ func main() {
 # Concurrency
 
 ## Goroutines
-Goroutines are lightweight threads (managed by Go, not OS threads). `go f(a, b)` starts a new goroutine which runs `f` (given `f` is a function).
+Goroutines are lightweight threads managed by Go (are not OS threads). `go f(a, b)` starts a new goroutine which runs the function `f`. You can use `sync.WaitGroup` to wait for gorutines to finish.
 
 ```go
-// just a function (which can be later started as a goroutine)
-func doStuff(s string) {
+func doStuff(wg *sync.WaitGroup) {
+	defer wg.Done() // Signal goroutine is done
+	fmt.Println("Doing stuff...")
+	time.Sleep(2 * time.Second)
+	fmt.Println("Done with stuff")
 }
 
 func main() {
-    // using a named function in a goroutine
-    go doStuff("foobar")
+	var wg sync.WaitGroup
 
-    // using an anonymous inner function in a goroutine
-    go func (x int) {
-        // function body goes here
-    }(42)
+	wg.Add(1)
+	go doStuff(&wg)
+
+	wg.Add(1)
+	go func(wg *sync.WaitGroup, x int) {
+		defer wg.Done()
+		fmt.Println("Doing anonymous stuff with", x)
+		time.Sleep(2 * time.Second)
+		fmt.Println("Done with anonymous stuff")
+	}(&wg, 42)
+
+	wg.Wait() // Wait for all goroutines in the WaitGroup to finish
+	fmt.Println("Main function ends")
 }
 ```
 
