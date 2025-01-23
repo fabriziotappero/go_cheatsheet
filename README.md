@@ -240,7 +240,7 @@ uint uint8 uint16 uint32 uint64 uintptr
 
 byte // alias for uint8
 
-rune // alias for int32 ~= a character (Unicode code point) - very Viking
+rune // alias for int32, it is 4 bytes. It is used for a character (good for a unicode character)
 
 float32 float64
 
@@ -519,18 +519,41 @@ var s *Vertex = new(Vertex) // new creates a pointer to a new struct instance
 ```
 
 ## Interfaces
+
+Used to implement Abstraction, Polymorphism, Decoupling and Testing.
+
 ```go
-// interface declaration
+
+// Interface declaration
 type Awesomizer interface {
     Awesomize() string
 }
 
-// types do *not* declare to implement interfaces
-type Foo struct {}
+// Type Foo implements the Awesomizer interface
+type Foo struct{}
 
-// instead, types implicitly satisfy an interface if they implement all required methods
 func (foo Foo) Awesomize() string {
     return "Awesome!"
+}
+
+// Another type Bar implements the Awesomizer interface
+type Bar struct{}
+
+func (bar Bar) Awesomize() string {
+    return "Super Awesome!"
+}
+
+// Function that accepts any type that implements the Awesomizer interface
+func PrintAwesomeness(a Awesomizer) {
+    fmt.Println(a.Awesomize())
+}
+
+func main() {
+    foo := Foo{}
+    bar := Bar{}
+
+    PrintAwesomeness(foo)
+    PrintAwesomeness(bar)
 }
 ```
 
