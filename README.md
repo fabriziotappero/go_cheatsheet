@@ -1,5 +1,8 @@
 # Go Cheatsheet
 
+<details closed>
+  <summary>Table of Contents</summary>
+
   * [Go in a Nutshell](#go-in-a-nutshell)
   * [Hello World](#hello-world)
   * [Operators](#operators)
@@ -41,7 +44,11 @@
   * [Files Embedding](#files-embedding)
   * [HTTP Server](#http-server)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc web</a></i></small>
+
+</details>
+
+  
 
  
 ## Credits
