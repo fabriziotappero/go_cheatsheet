@@ -1,4 +1,5 @@
-<h1 align="center">Go Cheatsheet</h1>
+<h1 align="center">GO CHEATSHEET</h1>
+<div align="center"><i>https://github.com/fabriziotappero/go_cheatsheet</i></div>
 
 <details closed>
   <summary>Table of Contents</summary>
@@ -70,8 +71,8 @@ If you're new to Go, do that tour. Seriously.
 
 ## Hello World
 
-File `hello.go`:
 ```go
+// file hello.go
 package main
 
 import "fmt"
@@ -80,7 +81,7 @@ func main() {
     fmt.Println("Hello Go")
 }
 ```
-`$ go run hello.go`
+Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 
 ## Operators
 
@@ -234,7 +235,6 @@ func adder(args ...int) int {
 ## Built-in Types
 ```go
 bool
-
 string
 
 int  int8  int16  int32  int64
@@ -245,11 +245,10 @@ byte // alias for uint8
 rune // alias for int32, it is 4 bytes. It is used for a character (good for a unicode character)
 
 float32 float64
-
 complex64 complex128
 ```
 
-All Go's predeclared identifiers are defined in the [builtin](https://golang.org/pkg/builtin/) package.  
+All Go predeclared identifiers are defined in the [builtin](https://golang.org/pkg/builtin/) package.  
 
 ## Type Conversions
 ```go
@@ -267,10 +266,10 @@ u := uint(f)
 * Package declaration at top of every source file
 * Executables are in package `main`
 * Convention: package name == last name of import path (import path `math/rand` => package `rand`)
-* Upper case identifier: exported (visible from other packages)
-* Lower case identifier: private (not visible from other packages)
 
-## Control structures
+To get Go standard package/function documentation type: `go doc fmt` or `go doc fmt.Println`. Upper case functions are visible, lower case functions are private.
+
+## Control Structures
 
 ### If
 ```go
@@ -416,7 +415,7 @@ s := x[:] // a slice referencing the storage of x
 ```
 
 ### Operations on Arrays and Slices
-`len(a)` gives you the length of an array/a slice. It's a built-in function, not a attribute/method on the array.
+`len(a)` gives you the length of an array/slice. It's a built-in function, not a attribute/method on the array.
 
 ```go
 // loop over an array/a slice
@@ -466,10 +465,8 @@ for key, value := range m {
 
 ## Structs
 
-There are no classes, only structs. Structs can have methods.
+There are no classes, only structs. Structs can have methods. A struct is a type and it is also a collection of fields.
 ```go
-// A struct is a type. It's also a collection of fields
-
 // Declaration
 type Vertex struct {
     X, Y float64
@@ -500,10 +497,7 @@ func (v *Vertex) add(n float64) {
     v.Y += n
 }
 
-```
-**Anonymous structs:**
-Cheaper and safer than using `map[string]interface{}`.
-```go
+// Anonymous structs are cheaper and safer than using `map[string]interface{}`.
 point := struct {
 	X, Y int
 }{1, 2}
@@ -522,10 +516,9 @@ var s *Vertex = new(Vertex) // new creates a pointer to a new struct instance
 
 ## Interfaces
 
-Used to implement Abstraction, Polymorphism, Decoupling and Testing.
+Interfaces are used to implement Abstraction, Polymorphism, Decoupling and Testing.
 
 ```go
-
 // Interface declaration
 type Awesomizer interface {
     Awesomize() string
@@ -625,7 +618,7 @@ func main() {
 ```
 
 ## Concurrency
-In go, concurrency is implemented using Goroutines and Channels.
+In Go, concurrency is implemented using Goroutines and Channels.
 
 ### Goroutines
 Goroutines are lightweight threads managed by Go (are not OS threads). `go f(a, b)` starts a new goroutine which runs the function `f`. You can use `sync.WaitGroup` to wait for goroutines to finish.
@@ -739,7 +732,7 @@ func main() {
 }
 ```
 
-### Established Facts About Channels (Channel Axioms)
+### Facts About Channels
 A send to a nil channel blocks forever.
 
   ```go
@@ -776,7 +769,7 @@ for i := 0; i < 3; i++ {
 // 1 2 0
 ```
 
-## Printing With Formatted I/O Functions
+## Printing With Formatted I/O Functions From *fmt*
 
 ```go
 fmt.Println("Hello, 你好, नमस्ते, Привет, ᎣᏏᏲ")                   // basic print with newline
@@ -830,11 +823,11 @@ func main() {
 }
 ```
 
-# Snippets
+# Code Snippets
 
 ## Files Embedding
 
-Go programs can embed static files using the `"embed"` package as follows:
+Go programs can embed static files using the `"embed"` package as follows.
 
 ```go
 package main
