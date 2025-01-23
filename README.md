@@ -88,9 +88,9 @@ func main() {
 
 ## Operators
 
-<table>
+<table cellspacing="0" cellpadding="0">
 <tr>
-<td td style="padding-right: 90px;">
+<td style="padding-right: 70px;">
 
 ### Arithmetic
 |Operator|Description|
@@ -126,7 +126,7 @@ func main() {
 
 <table>
 <tr>
-<td style="padding-right: 90px;">
+<td style="padding-right: 70px;">
 
 ### Logical
 |Operator|Description|
