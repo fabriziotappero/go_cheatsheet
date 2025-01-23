@@ -751,6 +751,20 @@ hellomsg := `
 ```
 
 ## Reflection
+Reflection uses the `reflect` package to inspect and manipulate types and values at runtime. `Type Switch` determines the type of an interface value at runtime and executes code based on that type.
+
+While both can be used to work with dynamic types, reflection is more powerful and flexible, allowing deeper inspection and manipulation of types and values.
+
+```go
+func main() {
+    var x int = 42
+    t := reflect.TypeOf(x)
+    v := reflect.ValueOf(x)
+    fmt.Println("Type:", t)
+    fmt.Println("Value:", v)
+}
+```
+
 ### Type Switch
 A type switch is like a regular switch statement, but the cases in a type switch specify types (not values) which are compared against the type of the value held by the given interface value.
 ```go
