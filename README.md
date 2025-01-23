@@ -1,4 +1,5 @@
-# Go Cheatsheet
+# Go Cheat Sheet
+
 
 <details closed>
   <summary>Table of Contents</summary>
