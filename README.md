@@ -88,9 +88,9 @@ func main() {
 
 ## Operators
 
-<table style="border-collapse: collapse; border: none; !important;">
-<tr>
-<td style="padding-right: 70px;">
+<table style="border: none; !important;">
+<tr style="border: none; !important;">
+<td style="padding-right: 70px; border: none; !important;">
 
 ### Arithmetic
 |Operator|Description|
@@ -108,7 +108,7 @@ func main() {
 |`>>`|right shift|
 
 </td>
-<td valign="top" >
+<td valign="top" style="border: none; !important;" >
 
 ### Comparison
 |Operator|Description|
@@ -124,9 +124,9 @@ func main() {
 </tr>
 </table>
 
-<table style="border-collapse: collapse; border: none; !important;">
+<table style="border: none; !important;">
 <tr>
-<td style="padding-right: 70px;">
+<td style="padding-right: 70px; border: none; !important;">
 
 ### Logical
 |Operator|Description|
