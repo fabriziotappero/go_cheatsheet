@@ -35,7 +35,7 @@
 17. [Printing](#printing)
 18. [Reflection](#reflection)
     * [Type Switch](#type-switch)
-    * [Examples](https://github.com/a8m/reflect-examples)
+    * [Examples (external)](https://github.com/a8m/reflect-examples)
 19. [Snippets](#snippets)
     * [Files Embedding](#files-embedding)
     * [HTTP Server](#http-server)
@@ -76,6 +76,11 @@ func main() {
 `$ go run hello.go`
 
 ## Operators
+
+<table>
+<tr>
+<td td style="padding-right: 90px;">
+
 ### Arithmetic
 |Operator|Description|
 |--------|-----------|
@@ -91,6 +96,9 @@ func main() {
 |`<<`|left shift|
 |`>>`|right shift|
 
+</td>
+<td valign="top" >
+
 ### Comparison
 |Operator|Description|
 |--------|-----------|
@@ -101,6 +109,14 @@ func main() {
 |`>`|greater than|
 |`>=`|greater than or equal|
 
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td style="padding-right: 90px;">
+
 ### Logical
 |Operator|Description|
 |--------|-----------|
@@ -108,12 +124,21 @@ func main() {
 |`\|\|`|logical or|
 |`!`|logical not|
 
+</td>
+<td valign="top" >
+
 ### Other
 |Operator|Description|
 |--------|-----------|
-|`&`|address of / create pointer|
+|`&`|address of or pointer creator|
 |`*`|dereference pointer|
-|`<-`|send / receive operator (see 'Channels' below)|
+|`<-`|send/receive operator (see `Channels` section)|
+
+</td>
+</tr>
+</table>
+
+
 
 ## Declarations
 Type goes after identifier!
