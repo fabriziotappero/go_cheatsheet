@@ -63,6 +63,7 @@ If you're new to Go, do that tour. Seriously.
 # Basic Syntax
 
 ## Hello World
+
 File `hello.go`:
 ```go
 package main
@@ -138,16 +139,16 @@ func main() {
 </tr>
 </table>
 
-
-
 ## Declarations
+
 Type goes after identifier!
 ```go
-var foo int // declaration without initialization
-var foo int = 42 // declaration with initialization
+var foo int                 // declaration without initialization
+var foo int = 42            // declaration with initialization
 var foo, bar int = 42, 1302 // declare and init multiple vars at once
-var foo = 42 // type omitted, will be inferred
-foo := 42 // shorthand, only in func bodies, omit var keyword, type is always implicit
+var foo = 42                // type omitted, will be inferred
+foo := 42                   // shorthand, only in func bodies, omit var 
+                            // keyword, type is always implicit
 const constant = "This is a constant"
 
 // iota can be used for incrementing numbers, starting from 0
@@ -158,11 +159,12 @@ const (
     c = 1 << iota
     d
 )
-    fmt.Println(a, b) // 1 2 (0 is skipped)
-    fmt.Println(c, d) // 8 16 (2^3, 2^4)
+    fmt.Println(a, b)   // 1 2 (0 is skipped)
+    fmt.Println(c, d)   // 8 16 (2^3, 2^4)
 ```
 
 ## Functions
+
 ```go
 // a simple function
 func functionName() {}
@@ -192,20 +194,25 @@ func returnMulti2() (n int, s string) {
     return
 }
 var x, str = returnMulti2()
-
 ```
 
 ### Functions As Values And Closures
+
 ```go
 func main() {
     // assign a function to a name
     add := func(a, b int) int {
         return a + b
     }
-    // use the name to call the function
+    // use "add" to call the function
     fmt.Println(add(3, 4))
 }
+```
 
+A closure is a function that captures the variables from its surrounding scope. This allows the function to access those variables even when it is executed outside of that scope. Closures are commonly used for creating functions with private variables or for functional programming techniques.
+
+```go
+// scope() is a function that returns a closure.
 // Closures, lexically scoped: Functions can access values that were
 // in scope when defining the function
 func scope() func() int{
@@ -220,8 +227,7 @@ func another_scope() func() int{
     return foo
 }
 
-
-// Closures
+// outer() return a closure
 func outer() (func() int, int) {
     outer_var := 2
     inner := func() int {
@@ -234,6 +240,9 @@ func outer() (func() int, int) {
 ```
 
 ### Variadic Functions
+
+A variadic function can accept a variable number of arguments.
+
 ```go
 func main() {
 	fmt.Println(adder(1, 2, 3)) 	// 6
