@@ -49,12 +49,9 @@
 
 </details>
 
-  
-
- 
 ## Credits
 
-Most example code taken from [A Tour of Go](http://tour.golang.org/), which is an excellent introduction to Go.
+The original version of this repo is [a8m's github repo](https://github.com/a8m/golang-cheat-sheet). Most example code taken from [A Tour of Go](http://tour.golang.org/), which is an excellent introduction to Go.
 If you're new to Go, do that tour. Seriously.
 
 ## Go in a Nutshell
