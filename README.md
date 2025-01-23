@@ -88,66 +88,28 @@ func main() {
 
 ## Operators
 
-<table style="border: none; !important;">
-<tr style="border: none; !important;">
-<td style="padding-right: 70px; border: none; !important;">
+### Arithmetic $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Comparison
 
-### Arithmetic
-|Operator|Description|
-|--------|-----------|
-|`+`|addition|
-|`-`|subtraction|
-|`*`|multiplication|
-|`/`|quotient|
-|`%`|remainder|
-|`&`|bitwise and|
+|Operator|Description||||Operator|Description|
+|--------|-----------|-|-|-|--------|-----------|
+|`+`|addition||||`==`|equal|
+|`-`|subtraction||||`!=`|not equal|
+|`*`|multiplication||||`<`|less than|
+|`/`|quotient||||`<=`|less than or equal|
+|`%`|remainder||||`>`|greater than|
+|`&`|bitwise and||||`>=`|greater than or equal|
 |`\|`|bitwise or|
 |`^`|bitwise xor|
 |`&^`|bit clear (and not)|
 |`<<`|left shift|
 |`>>`|right shift|
 
-</td>
-<td valign="top" style="border: none; !important;" >
-
-### Comparison
-|Operator|Description|
-|--------|-----------|
-|`==`|equal|
-|`!=`|not equal|
-|`<`|less than|
-|`<=`|less than or equal|
-|`>`|greater than|
-|`>=`|greater than or equal|
-
-</td>
-</tr>
-</table>
-
-<table style="border: none; !important;">
-<tr>
-<td style="padding-right: 70px; border: none; !important;">
-
-### Logical
-|Operator|Description|
-|--------|-----------|
-|`&&`|logical and|
-|`\|\|`|logical or|
-|`!`|logical not|
-
-</td>
-<td valign="top" >
-
-### Other
-|Operator|Description|
-|--------|-----------|
-|`&`|address of or pointer creator|
-|`*`|dereference pointer|
-|`<-`|send/receive operator (see `Channels` section)|
-
-</td>
-</tr>
-</table>
+### Logical $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Others
+|Operator|Description||||Operator|Description|
+|--------|-----------|-|-|-|--------|-----------|
+|`&&`|logical and||||`&`|address of or pointer creator|
+|`\|\|`|logical or||||`*`|dereference pointer|
+|`!`|logical not||||`<-`|send/receive operator (see `Channels` section)|
 
 ## Declarations
 
