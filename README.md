@@ -85,28 +85,25 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 
 ## Operators
 
-### Arithmetic $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Comparison
+### Arithmetic
+|   |           |    |           |    |              |    |                   |    |          |    |           |
+|---|-----------|----|-----------|----|--------------|----|-------------------|----|----------|----|-----------|
+|`+`|addition   |`-` |subtraction|`*` |multiplication|`/` |quotient           |`%` |remainder |    |           |
+|`&`|bitwise and|`\|`|bitwise or |`^` |bitwise xor   |`&^`|bit clear (and not)|`<<`|left shift|`>>`|right shift|
 
-|Operator|Description|Operator|Description|
-|--------|-----------|--------|-----------|
-|`+`|addition||`==`|equal|
-|`-`|subtraction|`!=`|not equal|
-|`*`|multiplication|`<`|less than|
-|`/`|quotient|`<=`|less than or equal|
-|`%`|remainder|`>`|greater than|
-|`&`|bitwise and|`>=`|greater than or equal|
-|`\|`|bitwise or|
-|`^`|bitwise xor|
-|`&^`|bit clear (and not)|
-|`<<`|left shift|
-|`>>`|right shift|
+### Comparison
+|    |     |    |         |   |         |    |                  |   |            |    |                     |
+|----|-----|----|---------|---|---------|----|------------------|---|------------|----|---------------------|
+|`==`|equal|`!=`|not equal|`<`|less than|`<=`|less than or equal|`>`|greater than|`>=`|greater than or equal|
 
-### Logical $~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Others
-|Operator|Description|Operator|Description|
-|--------|-----------|--------|-----------|
-|`&&`|logical and|`&`|address of or pointer creator|
-|`\|\|`|logical or|`*`|dereference pointer|
-|`!`|logical not|`<-`|send/receive operator (see `Channels` section)|
+### Logical 
+|    |           |      |          |   |           |
+|----|-----------|------|----------|---|-----------|
+|`&&`|logical and|`\|\|`|logical or|`!`|logical not|
+### Others
+|  |                             |   |                   |    |                                              |
+|--|-----------------------------|---|-------------------|----|----------------------------------------------|
+`&`|pointer address or ptr creator|`*`|dereference pointer|`<-`|send/receive operator (see `Channels` section)|
 
 ## Declarations
 
@@ -321,7 +318,7 @@ for {             // you can omit the condition => while(true)
 }
 ```
 
-The flow of a loop can be manipulated with `continue` and with `break` used alone or in conjunction with lables.
+The flow of a loop can be manipulated with `continue`/`break`, used alone or in conjunction with lables.
 `break` interrupt the current `for` loop and `continue` will continue/increment the current `for` loop. 
 
 By adding a label to `break` or `continue`, you can break or continue on other outer `for` loops.
