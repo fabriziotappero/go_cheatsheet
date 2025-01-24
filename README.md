@@ -85,7 +85,7 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 
 ## Operators
 
-### Arithmetic $~~~~~~~~~~~~~~~~~~~~~~~~~~$ Comparison
+### Arithmetic $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Comparison
 
 |Operator|Description|Operator|Description|
 |--------|-----------|--------|-----------|
@@ -101,7 +101,7 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 |`<<`|left shift|
 |`>>`|right shift|
 
-### Logical $~~~~~~~~~~~~~~~~~~~~~~~~$ Others
+### Logical $~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Others
 |Operator|Description|Operator|Description|
 |--------|-----------|--------|-----------|
 |`&&`|logical and|`&`|address of or pointer creator|
