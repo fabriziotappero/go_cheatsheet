@@ -86,25 +86,26 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 ## Operators
 
 ### Arithmetic
-|   |           |    |           |    |              |    |                   |    |          |    |           |
-|---|-----------|----|-----------|----|--------------|----|-------------------|----|----------|----|-----------|
-|`+`|addition   |`-` |subtraction|`*` |multiplication|`/` |quotient           |`%` |remainder |    |           |
-|`&`|bitwise and|`\|`|bitwise or |`^` |bitwise xor   |`&^`|bit clear (and not)|    |          |    |           |
-|`<<`|left shift|`>>`|right shift|    |              |    |                   ||   |          |    |           |
+|    |           |    |           |   |              |    |                   |   |         |
+|----|-----------|----|-----------|---|--------------|----|-------------------|---|---------|
+|`+` |addition   |`-` |subtraction|`*`|multiplication|`/` |quotient           |`%`|remainder|
+|`&` |bitwise and|`\|`|bitwise or |`^`|bitwise xor   |`&^`|bit clear (and not)|   |         |
+|`<<`|left shift |`>>`|right shift|   |              |    |                   |   |         |
 
 ### Comparison
-|    |                    |     |                     |   |         |    |            |
-|----|--------------------|-----|---------------------|---|---------|----|------------|
-|`==`|equal               |`!=` |not equal            |`<`|less than|`>` |greater than|
-|`<=`|less than or equal  |`>=` |greater than or equal|             |    |            |
+|    |                  |    |                     |   |         |    |            |
+|----|------------------|----|---------------------|---|---------|----|------------|
+|`==`|equal             |`!=`|not equal            |`<`|less than|`>` |greater than|
+|`<=`|less than or equal|`>=`|greater than or equal|   |         |    |            |
 
 ### Logical 
 |    |           |      |          |   |           |
 |----|-----------|------|----------|---|-----------|
 |`&&`|logical and|`\|\|`|logical or|`!`|logical not|
+
 ### Others
-|  |                             |   |                   |    |                                              |
-|--|-----------------------------|---|-------------------|----|----------------------------------------------|
+|  |                              |   |                   |    |                                              |
+|--|------------------------------|---|-------------------|----|----------------------------------------------|
 `&`|pointer address or ptr creator|`*`|dereference pointer|`<-`|send/receive operator (see `Channels` section)|
 
 ## Declarations
