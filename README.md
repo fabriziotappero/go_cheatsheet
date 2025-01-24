@@ -85,13 +85,6 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 
 ## Operators
 
-```go
-  // Arithmetic
-`+` addition      `-`  subtraction     `*` multiplication      `/` quotient             `%` remainder
-`&` bitwise and   `|`  bitwise or     `^` bitwise xor         `&^` bit clear (and not)
-`<<`left shift    `>>` right shift
-```
-
 ### Arithmetic
 |    |           |    |           |   |              |    |                   |   |         |
 |----|-----------|----|-----------|---|--------------|----|-------------------|---|---------|
