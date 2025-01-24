@@ -89,12 +89,14 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 |   |           |    |           |    |              |    |                   |    |          |    |           |
 |---|-----------|----|-----------|----|--------------|----|-------------------|----|----------|----|-----------|
 |`+`|addition   |`-` |subtraction|`*` |multiplication|`/` |quotient           |`%` |remainder |    |           |
-|`&`|bitwise and|`\|`|bitwise or |`^` |bitwise xor   |`&^`|bit clear (and not)|`<<`|left shift|`>>`|right shift|
+|`&`|bitwise and|`\|`|bitwise or |`^` |bitwise xor   |`&^`|bit clear (and not)|    |          |    |           |
+|`<<`|left shift|`>>`|right shift|    |              |    |                   ||   |          |    |           |
 
 ### Comparison
-|    |     |    |         |   |         |    |                  |   |            |    |                     |
-|----|-----|----|---------|---|---------|----|------------------|---|------------|----|---------------------|
-|`==`|equal|`!=`|not equal|`<`|less than|`<=`|less than or equal|`>`|greater than|`>=`|greater than or equal|
+|    |                    |     |                     |   |         |    |            |
+|----|--------------------|-----|---------------------|---|---------|----|------------|
+|`==`|equal               |`!=` |not equal            |`<`|less than|`>` |greater than|
+|`<=`|less than or equal  |`>=` |greater than or equal|             |    |            |
 
 ### Logical 
 |    |           |      |          |   |           |
