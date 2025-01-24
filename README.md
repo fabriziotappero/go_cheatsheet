@@ -85,6 +85,13 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 
 ## Operators
 
+```go
+  // Arithmetic
+`+` addition      `-`  subtraction     `*` multiplication      `/` quotient             `%` remainder
+`&` bitwise and   `|`  bitwise or     `^` bitwise xor         `&^` bit clear (and not)
+`<<`left shift    `>>` right shift
+```
+
 ### Arithmetic
 |    |           |    |           |   |              |    |                   |   |         |
 |----|-----------|----|-----------|---|--------------|----|-------------------|---|---------|
@@ -104,9 +111,9 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 |`&&`|logical and|`\|\|`|logical or|`!`|logical not|
 
 ### Others
-|  |                              |   |                   |    |                                              |
-|--|------------------------------|---|-------------------|----|----------------------------------------------|
-`&`|pointer address or ptr creator|`*`|dereference pointer|`<-`|send/receive operator (see `Channels` section)|
+|  |                              |   |                   |    |                     |
+|--|------------------------------|---|-------------------|----|---------------------|
+`&`|pointer address or ptr creator|`*`|dereference pointer|`<-`|send/receive operator|
 
 ## Declarations
 
