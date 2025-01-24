@@ -110,7 +110,7 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 
 ## Declarations
 
-Type goes after identifier!
+Type goes after identifier.
 ```go
 var foo int                 // declaration without initialization
 var foo int = 42            // declaration with initialization
@@ -165,7 +165,7 @@ func returnMulti2() (n int, s string) {
 var x, str = returnMulti2()
 ```
 
-### Functions As Values And Closures
+### Functions as Values and Closures
 
 ```go
 func main() {
@@ -210,25 +210,27 @@ func outer() (func() int, int) {
 
 ### Variadic Functions
 
-A variadic function can accept a variable number of arguments.
+A variadic function is a function that can accept a variable number of arguments.
 
 ```go
 func main() {
-	fmt.Println(adder(1, 2, 3)) 	// 6
-	fmt.Println(adder(9, 9))	// 18
+    fmt.Println(adder(1, 2, 3))     // 6
+    fmt.Println(adder(9, 9))    // 18
 
-	nums := []int{10, 20, 30}
-	fmt.Println(adder(nums...))	// 60
+    nums := []int{10, 20, 30}
+    fmt.Println(adder(nums...))    // 60
 }
 
-// By using ... before the type name of the last parameter you can indicate that it takes zero or more of those parameters.
-// The function is invoked like any other function except we can pass as many arguments as we want.
+// By using ... before the type name of the last parameter you can indicate 
+// that it takes zero or more of those parameters.
+// The function is invoked like any other function except we can pass as many
+// arguments as we want.
 func adder(args ...int) int {
-	total := 0
-	for _, v := range args { // Iterates over the arguments whatever the number.
-		total += v
-	}
-	return total
+    total := 0
+    for _, v := range args { // Iterates over args whatever the number
+        total += v
+    }
+    return total
 }
 ```
 
@@ -242,7 +244,8 @@ uint uint8 uint16 uint32 uint64 uintptr
 
 byte // alias for uint8
 
-rune // alias for int32, it is 4 bytes. It is used for a character (good for a unicode character)
+rune // alias for int32, it is 4 bytes
+     // It is used for a character, great for unicode
 
 float32 float64
 complex64 complex128
@@ -274,69 +277,84 @@ To get Go standard package/function documentation type: `go doc fmt` or `go doc 
 ### If
 ```go
 func main() {
-	// Basic one
-	if x > 10 {
-		return x
-	} else if x == 10 {
-		return 10
-	} else {
-		return -x
-	}
+    // Basic one
+    if x > 10 {
+        return x
+    } else if x == 10 {
+        return 10
+    } else {
+        return -x
+    }
 
-	// You can put one statement before the condition
-	if a := b + c; a < 42 {
-		return a
-	} else {
-		return a - 42
-	}
+    // You can put one statement before the condition
+    if a := b + c; a < 42 {
+        return a
+    } else {
+        return a - 42
+    }
 
-	// Type assertion inside if
-	var val interface{} = "foo"
-	if str, ok := val.(string); ok {
-		fmt.Println(str)
-	}
+    // Type assertion inside if
+    var val interface{} = "foo"
+    if str, ok := val.(string); ok {
+        fmt.Println(str)
+    }
 }
 ```
 
 ### Loops
 ```go
-    // There's only `for`, no `while`, no `until`
-    for i := 1; i < 10; i++ {
-    }
-    for ; i < 10;  { // while - loop
-    }
-    for i < 10  { // you can omit semicolons if there is only a condition
-    }
-    for { // you can omit the condition ~ while (true)
-    }
-    
-    // use break/continue on current loop
-    // use break/continue with label on outer loop
-here:
-    for i := 0; i < 2; i++ {
-        for j := i + 1; j < 3; j++ {
-            if i == 0 {
-                continue here
-            }
-            fmt.Println(j)
-            if j == 2 {
-                break
-            }
-        }
-    }
+// In Go rhere's only `for`, there is no `while` nor `until`
+for i := 1; i < 10; i++ {
+    //some code
+}
 
-there:
-    for i := 0; i < 2; i++ {
-        for j := i + 1; j < 3; j++ {
-            if j == 1 {
-                continue
-            }
-            fmt.Println(j)
-            if j == 2 {
-                break there
-            }
+for ; i < 10;  {  // while loop
+    //some code
+}
+
+for i < 10  {     // you can omit semicolons if there is only a condition
+    //some code
+}
+
+for {             // you can omit the condition => while(true)
+    //some code
+}
+```
+
+The flow of a loop can be manipulated with `continue` and with `break` used alone or in conjunction with lables.
+`break` interrupt the current `for` loop and `continue` will continue/increment the current `for` loop. 
+
+By adding a label to `break` or `continue`, you can break or continue on other outer `for` loops.
+```go
+// example 1
+here:
+for i := 0; i < 2; i++ {
+    for j := i + 1; j < 3; j++ {
+        if i == 0 {
+            continue here // jump to `for i` loop => i=1 and print 2
+        }
+        fmt.Println(j)
+        if j == 2 {
+            break      // exit the `for j` loop
         }
     }
+}
+// it prints: 2
+
+// example 2
+there:
+for i := 0; i < 2; i++ {
+    for j := i + 1; j < 3; j++ {
+        if j == 1 {
+            continue // jump to 'for j' loop => j=2 and print 2
+        }
+        fmt.Println(j)
+        if j == 2 {
+            break there // exit the `for i` loop 
+        }
+    }
+}
+// it prints: 2
 ```
 
 ### Switch
@@ -377,7 +395,7 @@ there:
     }
 ```
 
-## Arrays, Slices, Ranges
+## Arrays, Slices and Ranges
 
 ### Arrays
 ```go
@@ -385,29 +403,29 @@ var a [10]int // declare an int array with length 10. Array length is part of th
 a[3] = 42     // set elements
 i := a[3]     // read elements
 
-// declare and initialize
+// declare and initialise
 var a = [2]int{1, 2}
-a := [2]int{1, 2} //shorthand
-a := [...]int{1, 2} // elipsis -> Compiler figures out array length
+a := [2]int{1, 2}   //shorthand
+a := [...]int{1, 2} // elipsis -> Compiler will figure out array length
 ```
 
 ### Slices
 ```go
-var a []int                              // declare a slice - similar to an array, but length is unspecified
-var a = []int {1, 2, 3, 4}               // declare and initialize a slice (backed by the array given implicitly)
+var a []int                 // declare a slice - similar to array, but length is unspecified
+var a = []int {1, 2, 3, 4}  // declare and initialize a slice (backed by the array given implicitly)
 a := []int{1, 2, 3, 4}                   // shorthand
 chars := []string{0:"a", 2:"c", 1: "b"}  // ["a", "b", "c"]
 
-var b = a[lo:hi]	// creates a slice (view of the array) from index lo to hi-1
-var b = a[1:4]		// slice from index 1 to 3
-var b = a[:3]		// missing low index implies 0
-var b = a[3:]		// missing high index implies len(a)
-a =  append(a,17,3)	// append items to slice a
-c := append(a,b...)	// concatenate slices a and b
+var b = a[lo:hi]    // creates a slice (view of the array) from index lo to hi-1
+var b = a[1:4]        // slice from index 1 to 3
+var b = a[:3]        // missing low index implies 0
+var b = a[3:]        // missing high index implies len(a)
+a =  append(a,17,3)    // append items to slice a
+c := append(a,b...)    // concatenate slices a and b
 
 // create a slice with make
-a = make([]byte, 5, 5)	// first arg length, second capacity
-a = make([]byte, 5)	// capacity is optional
+a = make([]byte, 5, 5)    // first arg length, second capacity
+a = make([]byte, 5)        // capacity is optional
 
 // create a slice from an array
 x := [3]string{"Лайка", "Белка", "Стрелка"}
@@ -499,7 +517,7 @@ func (v *Vertex) add(n float64) {
 
 // Anonymous structs are cheaper and safer than using `map[string]interface{}`.
 point := struct {
-	X, Y int
+    X, Y int
 }{1, 2}
 ```
 
@@ -589,8 +607,8 @@ var logger *log.Logger = server.Logger
 There is no exception handling. Instead, functions that might produce an error just declare an additional return value of type [`error`](https://golang.org/pkg/builtin/#error). This is the `error` interface:
 
 ```go
-// The error built-in interface type is the conventional interface for representing an error condition,
-// with the nil value representing no error.
+// The error built-in interface type is the conventional interface for representing
+// an error condition, with the nil value representing no error.
 type error interface {
     Error() string
 }
@@ -599,21 +617,21 @@ type error interface {
 Here's an example:
 ```go
 func sqrt(x float64) (float64, error) {
-	if x < 0 {
-		return 0, errors.New("negative value")
-	}
-	return math.Sqrt(x), nil
+    if x < 0 {
+        return 0, errors.New("negative value")
+    }
+    return math.Sqrt(x), nil
 }
 
 func main() {
-	val, err := sqrt(-1)
-	if err != nil {
-		// handle error
-		fmt.Println(err) // negative value
-		return
-	}
-	// All is good, use `val`.
-	fmt.Println(val)
+    val, err := sqrt(-1)
+    if err != nil {
+        // handle error
+        fmt.Println(err) // negative value
+        return
+    }
+    // all is good, use `val`.
+    fmt.Println(val)
 }
 ```
 
@@ -625,29 +643,29 @@ Goroutines are lightweight threads managed by Go (are not OS threads). `go f(a, 
 
 ```go
 func doStuff(wg *sync.WaitGroup) {
-	defer wg.Done() // Signal goroutine is done
-	fmt.Println("Doing stuff...")
-	time.Sleep(2 * time.Second)
-	fmt.Println("Done with stuff")
+    defer wg.Done() // it signals goroutine is done
+    fmt.Println("Doing stuff...")
+    time.Sleep(2 * time.Second)
+    fmt.Println("Done with stuff")
 }
 
 func main() {
-	var wg sync.WaitGroup
+    var wg sync.WaitGroup
 
-	wg.Add(1)
-	go doStuff(&wg)
+    wg.Add(1)
+    go doStuff(&wg)
 
     // an anonymous function can be used with goroutines too
-	wg.Add(1)
-	go func(wg *sync.WaitGroup, x int) {
-		defer wg.Done()
-		fmt.Println("Doing anonymous stuff with", x)
-		time.Sleep(4 * time.Second)
-		fmt.Println("Done with anonymous stuff")
-	}(&wg, 42)
+    wg.Add(1)
+    go func(wg *sync.WaitGroup, x int) {
+        defer wg.Done()
+        fmt.Println("Doing anonymous stuff with", x)
+        time.Sleep(4 * time.Second)
+        fmt.Println("Done with anonymous stuff")
+    }(&wg, 42)
 
-	wg.Wait() // Wait for all goroutines in the WaitGroup to finish
-	fmt.Println("Main function ended")
+    wg.Wait() // wait for all goroutines in the WaitGroup to finish
+    fmt.Println("Main function ended")
 }
 ```
 
@@ -657,12 +675,14 @@ Channels are a way to communicate between goroutines. They allow you to send and
 
 ```go
 ch := make(chan int) // create a channel of type int
-ch <- 42             // Send a value to the channel ch.
-v := <-ch            // Receive a value from ch
+ch <- 42             // send a value to the channel ch.
+v := <-ch            // receive a value from ch
 
-// Non-buffered channels block. Read blocks when no value is available, write blocks until there is a read.
+// Non-buffered channels block. Read blocks when no value is available, write 
+// blocks until there is a read.
 
-// Create a buffered channel. Writing to a buffered channels does not block if less than <buffer size> unread values have been written.
+// Create a buffered channel. Writing to a buffered channels does not block 
+// if less than <buffer size> unread values have been written.
 ch := make(chan int, 100)
 
 close(ch) // closes the channel (only sender should close)
@@ -677,7 +697,8 @@ for i := range ch {
     fmt.Println(i)
 }
 
-// select blocks on multiple channel operations, if one unblocks, the corresponding case is executed
+// select blocks on multiple channel operations, if one unblocks, the 
+// corresponding case is executed
 func doStuff(channelOut, channelIn chan int) {
     select {
     case channelOut <- 42:
@@ -806,20 +827,20 @@ func main() {
 A type switch is like a regular switch statement, but the cases in a type switch specify types (not values) which are compared against the type of the value held by the given interface value.
 ```go
 func do(i interface{}) {
-	switch v := i.(type) {
-	case int:
-		fmt.Printf("Twice %v is %v\n", v, v*2)
-	case string:
-		fmt.Printf("%q is %v bytes long\n", v, len(v))
-	default:
-		fmt.Printf("I don't know about type %T!\n", v)
-	}
+    switch v := i.(type) {
+    case int:
+        fmt.Printf("Twice %v is %v\n", v, v*2)
+    case string:
+        fmt.Printf("%q is %v bytes long\n", v, len(v))
+    default:
+        fmt.Printf("I don't know about type %T!\n", v)
+    }
 }
 
 func main() {
-	do(21)
-	do("hello")
-	do(true)
+    do(21)
+    do("hello")
+    do(true)
 }
 ```
 
@@ -833,9 +854,9 @@ Go programs can embed static files using the `"embed"` package as follows.
 package main
 
 import (
-	"embed"
-	"log"
-	"net/http"
+    "embed"
+    "log"
+    "net/http"
 )
 
 // content holds the static content (2 files) for the web server.
@@ -843,8 +864,8 @@ import (
 var content embed.FS
 
 func main() {
-	http.Handle("/", http.FileServer(http.FS(content)))
-	log.Fatal(http.ListenAndServe(":8080", nil))
+    http.Handle("/", http.FileServer(http.FS(content)))
+    log.Fatal(http.ListenAndServe(":8080", nil))
 }
 ```
 
