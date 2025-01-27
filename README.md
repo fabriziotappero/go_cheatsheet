@@ -56,8 +56,7 @@ If you're new to Go, do that tour. Seriously.
 
 ## Go in a Nutshell
 
-* Imperative language
-* Statically typed
+* Imperative language and statically typed
 * Syntax tokens similar to C (but less parentheses and no semicolons) and the structure to Oberon-2
 * Compiles to native code (no JVM)
 * No classes, but structs with methods
@@ -87,16 +86,20 @@ Compile with `go build hello.go` or compile and run with `$ go run hello.go`.
 
 ```go
 // Arithmetic
-+  addition      -  subtraction    *  multiplication      /  quotient             % remainder
-&  bitwise and   |  bitwise or     ^  bitwise xor         &^ bit clear (and not)
-<< left shift    >> right shift
++  addition             -  subtraction            *  multiplication     /  quotient       % remainder
+&  bitwise and          |  bitwise or             ^  bitwise xor        &^ bit clear, not
+<< left shift           >> right shift
+
 // Comparison
-== equal               != not equal               < less than    > greater than
-<= less than or equal  >= greater than or equal  
+== equal                != not equal              < less than           > greater than
+<= less than or equal   >= greater than
+                           or equal
 // Logical 
- && logical and   | logical or   ! logical not
+ && logical and         || logical or             ! logical not
+
 // Other
-& pointer address or ptr creator    * dereference pointer   <- send/receive operator
+& ptr address or        * deref pointer           <- send/receive
+  or ptr creator
 ```
 
 ## Declarations
